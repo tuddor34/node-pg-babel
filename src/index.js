@@ -54,10 +54,6 @@ app.put('/users/:userId', (req, res) => {
     return res.send(`Received a PUT HTTP method on user/${req.params.userId} resource`);
 });
 
-app.delete('/users/:userId', (req, res) => {
-    return res.send(`Received a DELETE HTTP method on user/${req.params.userId} resource`);
-});
-
 app.get('/messages', (req, res) => {
     return res.send(Object.values(messages));
 });
@@ -76,6 +72,17 @@ app.post('/messages', (req, res) => {
     messages[id] = message;
     return res.send(message);
 })
+
+app.delete('/messages/:messageId', (req, res) => {
+    const {
+        [req.params.messageId]: message,
+        ...otherMessages
+    } = messages;
+
+    messages = otherMessages;
+
+    return res.send(message);
+});
 
 app.listen(PORT, () =>
     console.log(`Example app listening on port ${PORT}!`),
