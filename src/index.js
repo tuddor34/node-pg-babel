@@ -1,6 +1,6 @@
 //import express from 'express';
 import express from 'express';
-const uuid = require('uuid');
+import {v4 as uuidv4} from 'uuid';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -63,7 +63,7 @@ app.get('/messages/:messageId', (req, res) => {
 });
 
 app.post('/messages', (req, res) => {
-    const id = uuid.v4();
+    const id = uuidv4();
     const message = {
         id,
         text: req.body.text,
