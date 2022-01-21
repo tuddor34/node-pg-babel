@@ -1,34 +1,10 @@
 //import express from 'express';
 import express from 'express';
 import {v4 as uuidv4} from 'uuid';
+import models from 'models';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-
-let users = {
-    1: {
-        id: '1',
-        username: 'Robin Wieruch',
-    },
-    2: {
-        id: '2',
-        username: 'Dave Davids',
-    },
-};
-
-let messages = {
-    1: {
-        id: '1',
-        text: 'Hello World',
-        userId: '1',
-    },
-    2: {
-        id: '2',
-        text: 'By World',
-        userId: '2',
-    },
-};
 
 // middleware that makes body of request accessible on req.body for json body and url-encoded params
 app.use(express.json());
