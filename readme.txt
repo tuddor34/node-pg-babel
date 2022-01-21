@@ -8,3 +8,7 @@ Nvm
 - https://github.com/nvm-sh/nvm
 - tool to manage nodejs version
 - you can easily switch between versions
+
+Using node modules
+- put "type": "module" in package.json
+- nvm use --lts
