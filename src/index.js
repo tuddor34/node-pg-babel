@@ -1,13 +1,14 @@
 import express from 'express';
 import models from './models';
 import routes from './routes';
+import 'dotenv/config';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // middleware that makes body of request accessible on req.body for json body and url-encoded params
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 
 // define custom middleware (just a function with params (req, res, next))
 app.use((req, res, next) => {
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 app.use('/messages', routes.message);
 app.use('/users', routes.user);
 
-app.listen(PORT, () =>
-    console.log(`Example app listening on port ${PORT}!`),
-);
+app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}!`);
+    console.log(`Db user is: ${process.env.DB_USER}`);
+});
