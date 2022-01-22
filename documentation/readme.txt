@@ -36,6 +36,10 @@ Babel
 - npm install @babel/preset-env --save-dev
 - create .babelrc file in the root of the project and specify presets
 
+Environment variables
+- use dotenv library: npm install dotenv --save
+- you can use a .env file to access env variables afterwards, if you import: import 'dotenv/config';
+
 Weird things
 - needed to add --experimental-specifier-resolution=node in start script to be able to use directory import in node,
 without having to give full path to index as in:
