@@ -8,10 +8,13 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon --experimental-specifier-resolution=node --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
