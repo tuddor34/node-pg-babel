@@ -16,3 +16,15 @@ Using node modules
 
 Routes
 - in the main index.js we shouldn't define the routes, but they should be extracted in their own routes module
+
+devDependencies and dependencies in package.json
+- dependencies: npm install express --save
+- devDependencies: npm install nodemon --save-dev
+
+scripts in package.json
+- defines which commands you can execute from npm
+- for example: npm start implies having a 'start' value in 'scripts'
+
+nodemon
+- should be used as a devDependency
+- it facilitates not having to start node everytime a code change is made
