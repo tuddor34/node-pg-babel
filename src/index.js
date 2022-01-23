@@ -23,7 +23,8 @@ app.use((req, res, next) => {
 app.use('/messages', routes.message);
 app.use('/users', routes.user);
 
-sequelize.sync().then(() => {
+const dropDbTablesIfExists = true;
+sequelize.sync({force: dropDbTablesIfExists}).then(async () => {
     app.listen(PORT, () => {
         console.log(`Example app listening on port ${PORT}!`);
         console.log(`Db user is: ${process.env.DB_USER}`);
