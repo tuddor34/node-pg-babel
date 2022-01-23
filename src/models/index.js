@@ -23,7 +23,4 @@ Object.keys(models).forEach(key => {
 
 export {sequelize}
 
-export default {
-    users,
-    messages
-}
+export default models;
