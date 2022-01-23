@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
-import models from './models';
 import routes from './routes';
+import models, {sequelize} from './models';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,7 +23,9 @@ app.use((req, res, next) => {
 app.use('/messages', routes.message);
 app.use('/users', routes.user);
 
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`);
-    console.log(`Db user is: ${process.env.DB_USER}`);
+sequelize.sync().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Example app listening on port ${PORT}!`);
+        console.log(`Db user is: ${process.env.DB_USER}`);
+    });
 });

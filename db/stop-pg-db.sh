@@ -1,0 +1,2 @@
+docker container stop messaging_db_container
+docker container rm messaging_db_container
