@@ -25,8 +25,27 @@ app.use('/users', routes.user);
 
 const dropDbTablesIfExists = true;
 sequelize.sync({force: dropDbTablesIfExists}).then(async () => {
+    if (dropDbTablesIfExists) {
+        await createUsersWithMessages();
+    }
+
     app.listen(PORT, () => {
         console.log(`Example app listening on port ${PORT}!`);
-        console.log(`Db user is: ${process.env.DB_USER}`);
     });
 });
+
+const createUsersWithMessages = async () => {
+    await models.User.create(
+        {
+            username: 'lagrange',
+            messages: [
+                {
+                    text: 'Published the road to learn NodeJs',
+                },
+            ],
+        },
+        {
+            include: [models.Message],
+        },
+    );
+};
