@@ -1,5 +1,6 @@
-import Sequelize from 'sequelize';
-
+import {Sequelize, DataTypes} from 'sequelize';
+import user from "./user";
+import message from "./message";
 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -11,9 +12,10 @@ const sequelize = new Sequelize(
     }
 );
 
+
 const models = {
-    User: sequelize.import('./user'),
-    Message: sequelize.import('./message')
+    User: user(sequelize, DataTypes),
+    Message: message(sequelize, DataTypes)
 };
 
 Object.keys(models).forEach(key => {
