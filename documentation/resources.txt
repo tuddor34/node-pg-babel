@@ -1,1 +1,2 @@
 https://www.robinwieruch.de/node-express-server-rest-api/
+https://zetcode.com/javascript/sequelize/
